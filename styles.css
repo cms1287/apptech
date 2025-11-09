@@ -1,63 +1,101 @@
 body{
+    /* พื้นหลังสีขาวนวล หรือสีเบจอ่อนๆ เพื่อความอบอุ่น */
+    background-color: #F8F4F0; /* Off-White / Pale Beige */
+    /* สีข้อความสีน้ำตาลเข้ม หรือสีเทาเข้มที่ดูนุ่มนวล */
+    color: #4A4A4A;
     font-family: "Sarabun", sans-serif;
-    
 }
 
 header{
     text-align: center;
-    padding: 24px 16px 8px 16px;
+    /* เพิ่ม Padding ให้ดูโปร่ง */
+    padding: 35px 16px 15px 16px; 
 }
 
 header h1{
-    margin: 0 0 6px;
-    font-size: 24px;
+    margin: 0 0 8px;
+    font-size: 28px;
+    /* สีของหัวข้อหลักเป็นสีน้ำตาลเข้ม */
+    color: #333333;
+    font-weight: 600;
 }
 
 header p{
     margin: 0px;
-    color: darkgray;
-    font-size: 14px;
+    /* ใช้สีชมพู/พีชอ่อนๆ เป็นสีเน้น (Accent Color) */
+    color: #FFB3C1; /* Soft Pink / Dusty Rose */
+    font-size: 15px;
+    font-weight: 400;
 }
 
 main{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 16px;
-    gap: 16px;
+    padding: 25px 16px; 
+    gap: 20px;
 }
 
 .card{
-    border: 1px solid #d6d5d5;
-    border-radius: 8px;
-    padding: 16px;
+    /* พื้นหลังสีขาวสะอาด */
+    background-color: #FFFFFF;
+    /* ใช้เส้นขอบที่บางและสีเทาอ่อนมาก */
+    border: 1px solid #E0E0E0; 
+    /* เน้นขอบที่โค้งมน (Rounded Corners) */
+    border-radius: 12px;
+    padding: 22px; 
     text-align: center;
     max-width: 300px;
+    /* เพิ่มเงาที่ดูนุ่มนวลและจางมาก */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    /* เอฟเฟกต์ยกขึ้นเล็กน้อย */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .card img{
     width: 100px;
     height: 100px;
     object-fit: contain;
+    /* ทำภาพให้ดูนุ่มนวลขึ้น */
+    border-radius: 8px; 
+    padding: 4px;
+    /* ลบขอบ/พื้นหลังที่แข็งกระด้างออก */
 }
 
 .card h2{
-    margin: 12 0 6px;
-    font-size: 18px;;
+    margin: 14px 0 6px;
+    font-size: 20px;
+    color: #333333;
+    font-weight: 500;
 }
 
 .card p{
-    margin: 0 0 10px;
-    color: dimgray;
+    margin: 0 0 14px;
+    color: #777777;
     font-size: 14px;
+    font-weight: 300;
 }
 
 .card button{
     font-family: "Noto Sans Thai", sans-serif;
-    border: 1px solid #ddd;
-    background: #fff;
-    padding: 6 10px;
+    /* ปุ่มใช้สีพาสเทล หรือสีชมพูอ่อน */
+    background: #FFDDE2; /* Pale Pink */
+    color: #333333; /* ข้อความสีเข้ม */
+    border: none;
+    padding: 8px 18px;
     border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.card button:hover{
+    background: #FFC0CB; /* Pinker on hover */
 }
 
 #overlay {
@@ -66,55 +104,89 @@ main{
     display: none;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.4);
+    /* พื้นหลังเป็นสีขาวโปร่งแสง */
+    background: rgba(255, 255, 255, 0.85); 
+    z-index: 1000;
   }
 
 #overlay.open {
-display: flex;
+    display: flex;
 }
 
 .overlay-box {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    /* เน้นความโค้งมนให้มากขึ้น */
+    border-radius: 16px; 
+    padding: 30px;
     text-align: center;
     width: 90%;
-    max-width: 320px;
+    max-width: 350px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .overlay-box img {
     width: 120px;
     height: 120px;
     object-fit: contain;
+    border: none;
+    border-radius: 8px;
 }
 
 .overlay-box h2 {
-    margin: 10px 0 6px;
-    font-size: 20px;
+    margin: 18px 0 8px;
+    font-size: 24px;
+    color: #333333;
+    font-weight: 600;
 }
 
 .overlay-box p {
-    margin: 0 0 12px;
-    color: #555;
+    margin: 0 0 20px;
+    color: #666;
+    font-size: 16px;
+    font-weight: 300;
 }
 
 .overlay-box a,
 .overlay-box button {
     display: inline-block;
-    margin: 4px;
-    padding: 6px 12px;
-    border: 1px solid #ddd;
+    margin: 6px;
+    padding: 10px 20px;
     border-radius: 6px;
-    background: #fff;
-    color: #2457e6;
     text-decoration: none;
     cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+}
+
+/* ปุ่ม 'ดูกราฟ' (Link) - ใช้สีเน้นหลัก */
+.overlay-box a {
+    background: #FFB3C1; /* Soft Pink Accent */
+    color: #333333;
+    border: 1px solid #FFB3C1;
+}
+
+.overlay-box a:hover {
+    background: #FFC0CB;
+    border: 1px solid #FFC0CB;
+}
+
+/* ปุ่ม 'ปิด' (Button) - ใช้โทนสีเป็นกลาง */
+.overlay-box button {
+    background: #EAEAEA;
+    color: #4A4A4A;
+    border: 1px solid #EAEAEA;
+}
+
+.overlay-box button:hover {
+    background: #D8D8D8;
 }
 
 footer {
     text-align: center;
-    color: #777;
-    font-size: 12px;
-    padding: 20px 0;
+    color: #AAAAAA;
+    font-size: 13px;
+    padding: 25px 0;
+    /* เส้นแบ่งที่บางมาก */
+    border-top: 1px solid #EEEEEE;
 }
