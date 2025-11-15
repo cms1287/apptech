@@ -1,35 +1,163 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale =1">
-    <title> แนะนำหุ้น Tech </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>CRUD Tester - Cute Pink</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1> กระดานแนะนำหุ้น Tech ชั้นนำ</h1>
-        <p> คลิ๊กเพื่อดูรายละเอียดเพิ่มเติม </p>
-    </header>
+  <header class="app-header">
+    <h1>💖 User CRUD Tester 💖</h1>
+    <p>ทดสอบ API GET · POST · PUT · DELETE แบบน่ารักใสๆ อมชมพู</p>
+    <span class="badge">API: /api/users</span>
+  </header>
 
-    <main id = "companyList"></main>
+  <main class="container">
+    <!-- Info + Health -->
+    <section class="card">
+      <h2>🔌 API Status</h2>
+      <p class="small-text">
+        Base URL:
+        <code id="baseUrlText"></code>
+      </p>
+      <button id="btnHealth" class="btn btn-outline">
+        เช็คสถานะ /health
+      </button>
+      <div id="healthResult" class="result-box small-result"></div>
+    </section>
 
-    <div id="overlay">
-        <article class="overlay-box">
-            <img id = "overlayLogo" src = "" alt = "">
-            <h2 id = "overlayTitle"></h2>
-            <p id = "overlayDesc"></p>
-            <a id = "overlayLink" href = "#" target = "_blank"> ดูกราฟ </a>
-            <button id = "closeBtn"> ปิด </button>
-        </article>
-    </div>
+    <!-- List Users (GET /api/users) -->
+    <section class="card">
+      <div class="card-header">
+        <h2>📋 List Users (GET)</h2>
+        <button id="btnRefresh" class="btn btn-primary">
+          รีเฟรชรายการ
+        </button>
+      </div>
+      <p class="hint">ดึงรายการผู้ใช้ทั้งหมดจาก <code>GET /api/users</code></p>
+      <div id="usersList" class="users-list empty-state">
+        ยังไม่มีข้อมูล ลองกด "รีเฟรชรายการ" หรือสร้าง User ใหม่ก่อนนะคะ 💗
+      </div>
+    </section>
 
-    <footer>
-         &copy; พัฒนาโดย นายธีระชัย ชัยวัฒน์
-    </footer>
-    <script src="script.js"></script>
+    <!-- Create User (POST /api/users) -->
+    <section class="card">
+      <h2>✨ Create User (POST)</h2>
+      <p class="hint">
+        ถ้าไม่กรอก <code>Custom ID</code> ระบบจะใช้ ObjectId อัตโนมัติจาก MongoDB
+      </p>
+      <form id="formCreate" class="form-grid">
+        <label>
+          Custom ID (ไม่บังคับ)
+          <input type="text" name="id" placeholder="เช่น user-001" />
+        </label>
+        <label>
+          Name *
+          <input type="text" name="name" placeholder="Alice" required />
+        </label>
+        <label>
+          Email *
+          <input type="email" name="email" placeholder="alice@example.com" required />
+        </label>
+        <label>
+          Role
+          <input type="text" name="role" placeholder="engineer" />
+        </label>
+
+        <button type="submit" class="btn btn-success">
+          ➕ สร้าง User (POST)
+        </button>
+      </form>
+      <div id="createResult" class="result-box"></div>
+    </section>
+
+    <!-- Get One User (GET /api/users/:id) -->
+    <section class="card">
+      <h2>🔍 Get User by ID (GET)</h2>
+      <form id="formGetOne" class="form-inline">
+        <input
+          type="text"
+          name="id"
+          placeholder="ใส่ ID ที่ต้องการค้นหา"
+          required
+        />
+        <button type="submit" class="btn btn-primary">
+          ค้นหา
+        </button>
+      </form>
+      <div id="getOneResult" class="result-box"></div>
+    </section>
+
+    <!-- Update User (PUT /api/users/:id) -->
+    <section class="card">
+      <h2>🛠 Update User (PUT)</h2>
+      <p class="hint">
+        จะอัปเดตเฉพาะฟิลด์ที่กรอกค่า (ว่าง = ไม่อัปเดตฟิลด์นั้น)
+      </p>
+      <form id="formUpdate" class="form-grid">
+        <label>
+          Target ID *
+          <input
+            type="text"
+            name="id"
+            placeholder="ID ของ user ที่ต้องการแก้ไข"
+            required
+          />
+        </label>
+        <label>
+          New Name
+          <input type="text" name="name" placeholder="เว้นว่างถ้าไม่แก้" />
+        </label>
+        <label>
+          New Email
+          <input type="email" name="email" placeholder="เว้นว่างถ้าไม่แก้" />
+        </label>
+        <label>
+          New Role
+          <input type="text" name="role" placeholder="เว้นว่างถ้าไม่แก้" />
+        </label>
+
+        <button type="submit" class="btn btn-warning">
+          ✏️ อัปเดต User (PUT)
+        </button>
+      </form>
+      <div id="updateResult" class="result-box"></div>
+    </section>
+
+    <!-- Delete User (DELETE /api/users/:id) -->
+    <section class="card">
+      <h2>🗑 Delete User (DELETE)</h2>
+      <form id="formDelete" class="form-inline">
+        <input
+          type="text"
+          name="id"
+          placeholder="ID ของ user ที่ต้องการลบ"
+          required
+        />
+        <button type="submit" class="btn btn-danger">
+          ลบ User (DELETE)
+        </button>
+      </form>
+      <div id="deleteResult" class="result-box"></div>
+    </section>
+
+    <!-- Raw JSON Response Viewer -->
+    <section class="card">
+      <h2>👀 Raw Response (Debug)</h2>
+      <p class="hint">
+        แสดง JSON ล่าสุด + HTTP status เพื่อ debug การยิง API
+      </p>
+      <div id="rawResponse" class="raw-box">
+        ยังไม่มี response ล่าสุดค่ะ 💌
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    ทำด้วย 💕 เพื่อทดสอบ API Flask + MongoDB
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>

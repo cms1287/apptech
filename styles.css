@@ -1,192 +1,278 @@
-body{
-    /* พื้นหลังสีขาวนวล หรือสีเบจอ่อนๆ เพื่อความอบอุ่น */
-    background-color: #F8F4F0; /* Off-White / Pale Beige */
-    /* สีข้อความสีน้ำตาลเข้ม หรือสีเทาเข้มที่ดูนุ่มนวล */
-    color: #4A4A4A;
-    font-family: "Sarabun", sans-serif;
+/* ---------- Reset เล็กน้อย ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-header{
-    text-align: center;
-    /* เพิ่ม Padding ให้ดูโปร่ง */
-    padding: 35px 16px 15px 16px; 
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: linear-gradient(135deg, #ffe6f1, #fff0f6);
+  color: #333;
+  min-height: 100vh;
 }
 
-header h1{
-    margin: 0 0 8px;
-    font-size: 28px;
-    /* สีของหัวข้อหลักเป็นสีน้ำตาลเข้ม */
-    color: #333333;
-    font-weight: 600;
+/* ---------- Header ---------- */
+.app-header {
+  text-align: center;
+  padding: 1.8rem 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #ffd1e5;
 }
 
-header p{
-    margin: 0px;
-    /* ใช้สีชมพู/พีชอ่อนๆ เป็นสีเน้น (Accent Color) */
-    color: #FFB3C1; /* Soft Pink / Dusty Rose */
-    font-size: 15px;
-    font-weight: 400;
+.app-header h1 {
+  font-size: 1.8rem;
+  color: #e86ca9;
+  margin-bottom: 0.4rem;
 }
 
-main{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 25px 16px; 
-    gap: 20px;
+.app-header p {
+  color: #555;
+  font-size: 0.95rem;
 }
 
-.card{
-    /* พื้นหลังสีขาวสะอาด */
-    background-color: #FFFFFF;
-    /* ใช้เส้นขอบที่บางและสีเทาอ่อนมาก */
-    border: 1px solid #E0E0E0; 
-    /* เน้นขอบที่โค้งมน (Rounded Corners) */
-    border-radius: 12px;
-    padding: 22px; 
-    text-align: center;
-    max-width: 300px;
-    /* เพิ่มเงาที่ดูนุ่มนวลและจางมาก */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
-    transition: transform 0.2s, box-shadow 0.2s;
+.badge {
+  display: inline-block;
+  margin-top: 0.6rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px dashed #ff99c8;
+  font-size: 0.75rem;
+  color: #e65194;
+  background-color: #fff5fa;
 }
 
-.card:hover {
-    /* เอฟเฟกต์ยกขึ้นเล็กน้อย */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+/* ---------- Layout ---------- */
+.container {
+  max-width: 960px;
+  margin: 1.5rem auto 2rem;
+  padding: 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.card img{
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-    /* ทำภาพให้ดูนุ่มนวลขึ้น */
-    border-radius: 8px; 
-    padding: 4px;
-    /* ลบขอบ/พื้นหลังที่แข็งกระด้างออก */
+/* ---------- Card ---------- */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 4px 12px rgba(232, 108, 169, 0.16);
+  border: 1px solid #ffe0f0;
 }
 
-.card h2{
-    margin: 14px 0 6px;
-    font-size: 20px;
-    color: #333333;
-    font-weight: 500;
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
-.card p{
-    margin: 0 0 14px;
-    color: #777777;
-    font-size: 14px;
-    font-weight: 300;
+.card h2 {
+  font-size: 1.1rem;
+  color: #d64f8d;
+  margin-bottom: 0.4rem;
 }
 
-.card button{
-    font-family: "Noto Sans Thai", sans-serif;
-    /* ปุ่มใช้สีพาสเทล หรือสีชมพูอ่อน */
-    background: #FFDDE2; /* Pale Pink */
-    color: #333333; /* ข้อความสีเข้ม */
-    border: none;
-    padding: 8px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s;
+.hint {
+  font-size: 0.82rem;
+  color: #777;
+  margin-bottom: 0.5rem;
 }
 
-.card button:hover{
-    background: #FFC0CB; /* Pinker on hover */
+/* ---------- Buttons ---------- */
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, opacity 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
 }
 
-#overlay {
-    position: fixed;
-    inset: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    /* พื้นหลังเป็นสีขาวโปร่งแสง */
-    background: rgba(255, 255, 255, 0.85); 
-    z-index: 1000;
-  }
-
-#overlay.open {
-    display: flex;
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  opacity: 0.95;
 }
 
-.overlay-box {
-    background: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    /* เน้นความโค้งมนให้มากขึ้น */
-    border-radius: 16px; 
-    padding: 30px;
-    text-align: center;
-    width: 90%;
-    max-width: 350px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
-.overlay-box img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    border: none;
-    border-radius: 8px;
+.btn-primary {
+  background: linear-gradient(135deg, #ff8ccf, #ff65b3);
+  color: #fff;
 }
 
-.overlay-box h2 {
-    margin: 18px 0 8px;
-    font-size: 24px;
-    color: #333333;
-    font-weight: 600;
+.btn-success {
+  background: linear-gradient(135deg, #ffb8e5, #ff8ccf);
+  color: #fff;
 }
 
-.overlay-box p {
-    margin: 0 0 20px;
-    color: #666;
-    font-size: 16px;
-    font-weight: 300;
+.btn-warning {
+  background: linear-gradient(135deg, #ffd6a5, #ffb347);
+  color: #5a4100;
 }
 
-.overlay-box a,
-.overlay-box button {
-    display: inline-block;
-    margin: 6px;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s, color 0.2s;
+.btn-danger {
+  background: linear-gradient(135deg, #ff9aa2, #ff6f7d);
+  color: #fff;
 }
 
-/* ปุ่ม 'ดูกราฟ' (Link) - ใช้สีเน้นหลัก */
-.overlay-box a {
-    background: #FFB3C1; /* Soft Pink Accent */
-    color: #333333;
-    border: 1px solid #FFB3C1;
+.btn-outline {
+  background: #fff;
+  color: #e65194;
+  border: 1px solid #ffb8e5;
 }
 
-.overlay-box a:hover {
-    background: #FFC0CB;
-    border: 1px solid #FFC0CB;
+/* ---------- Forms ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.2rem;
 }
 
-/* ปุ่ม 'ปิด' (Button) - ใช้โทนสีเป็นกลาง */
-.overlay-box button {
-    background: #EAEAEA;
-    color: #4A4A4A;
-    border: 1px solid #EAEAEA;
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  color: #555;
+  gap: 0.25rem;
 }
 
-.overlay-box button:hover {
-    background: #D8D8D8;
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
 }
 
-footer {
-    text-align: center;
-    color: #AAAAAA;
-    font-size: 13px;
-    padding: 25px 0;
-    /* เส้นแบ่งที่บางมาก */
-    border-top: 1px solid #EEEEEE;
+input[type="text"],
+input[type="email"] {
+  border-radius: 999px;
+  border: 1px solid #ffd1e5;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  outline: none;
+  background-color: #fffafc;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #ff8ccf;
+  box-shadow: 0 0 0 2px rgba(255, 140, 207, 0.18);
+}
+
+/* ---------- Users List ---------- */
+.users-list {
+  margin-top: 0.5rem;
+  max-height: 260px;
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px dashed #ffd1e5;
+  background: #fffafc;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.users-list-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-list-table th,
+.users-list-table td {
+  padding: 0.25rem 0.4rem;
+  border-bottom: 1px solid #ffe6f3;
+}
+
+.users-list-table th {
+  background-color: #ffe6f3;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  font-weight: 600;
+  color: #b03f76;
+}
+
+.users-list-table tr:last-child td {
+  border-bottom: none;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b57ba1;
+}
+
+/* ---------- Result / Response ---------- */
+.result-box {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 10px;
+  background: #fff0fa;
+  border: 1px solid #ffd1e5;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-result {
+  font-size: 0.75rem;
+}
+
+.result-success {
+  border-color: #ffb8e5;
+  background: #fff7fd;
+}
+
+.result-error {
+  border-color: #ff9aa2;
+  background: #ffecef;
+}
+
+.raw-box {
+  margin-top: 0.4rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 10px;
+  border: 1px dashed #ffb8e5;
+  background: #fffafe;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  max-height: 320px;
+  overflow: auto;
+}
+
+/* ---------- Misc ---------- */
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  background-color: #ffe9f5;
+  border-radius: 999px;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.78rem;
+}
+
+.small-text {
+  font-size: 0.8rem;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+  text-align: center;
+  padding: 0.9rem 0.5rem 1.2rem;
+  font-size: 0.8rem;
+  color: #a55582;
 }
